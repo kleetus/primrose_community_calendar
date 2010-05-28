@@ -1,0 +1,131 @@
+body {
+  font: normal normal normal small Tahoma;
+}
+
+table {
+  border: 1px solid #ddd;
+  border-collapse: collapse;
+  margin-top: 10px;
+  clear: left;
+}
+
+th {
+  font-weight: normal;
+  font-size: 1.3em;
+  border: 1px solid #999;
+  background-color: #daf0aa;
+}
+
+td {
+  width: 150px;
+  height: 120px;
+  border: 1px solid #ddd;
+  background-color: #f4f4f4;
+}
+
+.day_wrapper {
+  
+  width: 150px;
+  height: 120px;  
+}
+
+.soft_nums_true {
+  color: #bbb;
+}
+
+.soft_nums_false {
+  color: #000;
+}
+
+.today {
+ background-color: #dddeeb; 
+}
+
+#event_form {
+ font-size: smaller; 
+}
+
+#event_form input, #time_select {
+  float: right;
+}
+
+#object_errors {
+  color: red;
+  font-size: 16px;
+}
+
+.success {
+  color: green;
+  font-size: 16px;  
+}
+
+#error_close {
+  float: right;
+}
+
+.time_heading {
+  font-size: 18px;
+  margin: 5px 5px auto 5px;
+  float: left;
+}
+
+
+#main_event_label {
+  font-size: 14px;
+  color: green;
+}
+
+#left_arrow {
+  float: left;
+  display: block;
+  width: 50px;
+  height: 50px;
+  background-image: url('/images/icons.jpg');
+  background-repeat: no-repeat;
+  background-position: 81% 28%;
+}
+
+#right_arrow {
+  float: left;
+  display: block;
+  width: 50px;
+  height: 50px;
+  background-image: url('/images/icons.jpg');
+  background-repeat: no-repeat;
+  background-position: 96% 28%;
+  clear: right;
+}
+
+#container {
+  position: relative;
+  left: 450px;
+}
+
+#this_month {
+  clear: both;
+}
+
+label {
+  font-weight: bold;
+}
+
+#form_check_box {
+  font-size: 10px;
+  margin-left: 75px;
+  font-weight: normal;
+}
+
+.todays_events {
+  float: left;
+  position: relative;
+  left: 0px;
+  font-size: smaller;
+  color: red;
+}
+
+#this_event {
+  position: relative;
+  left: 0px;
+  margin-bottom: 20px;
+  font-size: smaller;
+}

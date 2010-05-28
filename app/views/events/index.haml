@@ -1,0 +1,40 @@
+%h2 Community Calendar 
+.results#event_submit{ :title => "Results" }
+%br
+= render :partial => 'month'
+#event_form{:title => "New Event"}
+  - remote_form_for :events, :update => { :success => "event_submit", :failure => "event_submit" }, :complete => "restyle_callback_element(); add_event_to_calendar();" do |f|
+    #main_event_label
+    %br
+    = f.hidden_field :month
+    = f.hidden_field :year
+    = f.hidden_field :day
+    %a{ :href => "/scheduling_rules" }
+      Scheduling rules
+    %p  
+    = f.label :name, 'Name:'
+    = f.text_field :name
+    %p
+    #form_check_box
+      = f.label :display_name, "Display my name on the calender"
+      = f.check_box :display_name    
+    %p
+    = f.label :start_time, 'Start Time'
+    #time_select
+      = f.time_select :start_time, { :minute_step => 30 }
+    %p
+    = f.label :email, 'Email: (optional)'
+    = f.text_field :email
+    %p
+    #form_check_box
+      = f.label :add_mailing_list, 'Add my email to the email list'
+      = f.check_box :add_mailing_list
+    %p
+    = f.label :address, 'Address:'
+    = f.text_field :address
+    %p
+    = f.label :phone, 'Phone:'
+    = f.text_field :phone
+    %p
+    %br
+    = f.submit "submit"

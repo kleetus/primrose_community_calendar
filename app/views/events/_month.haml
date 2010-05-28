@@ -1,0 +1,28 @@
+#this_month
+  %a{ :href => "/events" }
+    Return to current month
+#container
+  %span#left_arrow{ :onclick => "javascript:move_month(-1);"}
+  %span.time_heading#month{ :month => @month }
+    = month_map.invert[@month]
+  %span.time_heading#year{ :year => @year }
+    = @year
+  %span#right_arrow{ :onclick => "javascript:move_month(1);"}
+%p
+%table
+  %tr
+    %th
+      Sun
+    %th
+      Mon
+    %th
+      Tue
+    %th
+      Wed
+    %th
+      Thu
+    %th
+      Fri
+    %th
+      Sat
+  = create_calendar_body

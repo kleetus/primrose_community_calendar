@@ -1,0 +1,7 @@
+= "Event for: #{@month}/#{@day}/#{@year}"
+%br
+#this_event{ :monthyear => "#{@month}_#{@day}" }
+  = print_event_block(@year, @month, @day, {"#{@year}-#{@month}-#{@day}" => @event})
+  %br
+.success
+  Scheduled successfully! An email was sent to the clubhouse administrator for further action.
