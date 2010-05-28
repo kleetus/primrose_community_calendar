@@ -16478,3 +16478,86 @@ Rendering events/index
 Rendered events/_month (4.6ms)
 Completed in 50ms (View: 30, DB: 1) | 200 OK [http://localhost/events]
   [4;36;1mEvent Load (0.3ms)[0m   [0;1mSELECT * FROM "events" [0m
+
+
+Processing EventsController#create (for 127.0.0.1 at 2010-05-27 23:50:16) [POST]
+  Parameters: {"authenticity_token"=>"gK/Y75VWZHMn0SZYGLEJ7CIbrUt6vSxt3dUdjOdDLzs=", "events"=>{"address"=>"123 Main St.", "name"=>"chris kleeschulte", "start_time(1i)"=>"2010", "start_time(2i)"=>"5", "month"=>"5", "start_time(3i)"=>"27", "start_time(4i)"=>"23", "start_time(5i)"=>"00", "day"=>"28", "phone"=>"4156907847", "year"=>"2010", "display_name"=>"0", "add_mailing_list"=>"0", "email"=>"laconia@gmail.com"}}
+  [4;35;1mEvent Load (0.4ms)[0m   [0mSELECT "events".id FROM "events" WHERE ("events"."start_time" = '2010-05-28 23:00:00') LIMIT 1[0m
+  [4;36;1mEvent Create (0.5ms)[0m   [0;1mINSERT INTO "events" ("address", "name", "created_at", "updated_at", "phone", "display_name", "add_mailing_list", "start_time", "email") VALUES('123 Main St.', 'chris kleeschulte', '2010-05-27 23:50:16', '2010-05-27 23:50:16', '4156907847', 'f', 'f', '2010-05-28 23:00:00', 'laconia@gmail.com')[0m
+Rendered events/_success (3.7ms)
+Completed in 55ms (View: 7, DB: 1) | 200 OK [http://localhost/events]
+
+
+Processing EventsController#index (for 127.0.0.1 at 2010-05-27 23:55:19) [GET]
+  [4;35;1mEvent Load (1.8ms)[0m   [0mSELECT * FROM "events" ORDER BY start_time[0m
+Rendering template within layouts/main
+Rendering events/index
+Rendered events/_month (3.9ms)
+Completed in 85ms (View: 62, DB: 2) | 200 OK [http://localhost/events]
+
+
+Processing EventsController#create (for 127.0.0.1 at 2010-05-27 23:55:29) [POST]
+  Parameters: {"authenticity_token"=>"gK/Y75VWZHMn0SZYGLEJ7CIbrUt6vSxt3dUdjOdDLzs=", "events"=>{"address"=>"test", "name"=>"test", "start_time(1i)"=>"2010", "start_time(2i)"=>"5", "month"=>"5", "start_time(3i)"=>"27", "start_time(4i)"=>"23", "start_time(5i)"=>"00", "day"=>"29", "phone"=>"test", "year"=>"2010", "display_name"=>"0", "add_mailing_list"=>"0", "email"=>"test"}}
+  [4;36;1mEvent Load (0.2ms)[0m   [0;1mSELECT "events".id FROM "events" WHERE ("events"."start_time" = '2010-05-29 23:00:00') LIMIT 1[0m
+  [4;35;1mEvent Create (0.4ms)[0m   [0mINSERT INTO "events" ("address", "name", "created_at", "updated_at", "phone", "display_name", "add_mailing_list", "start_time", "email") VALUES('test', 'test', '2010-05-27 23:55:29', '2010-05-27 23:55:29', 'test', 'f', 'f', '2010-05-29 23:00:00', 'test')[0m
+Rendered events/_success (2.7ms)
+Completed in 50ms (View: 7, DB: 1) | 200 OK [http://localhost/events]
+
+
+Processing EventsController#index (for 127.0.0.1 at 2010-05-27 23:55:53) [GET]
+  [4;36;1mEvent Load (1.9ms)[0m   [0;1mSELECT * FROM "events" ORDER BY start_time[0m
+Rendering template within layouts/main
+Rendering events/index
+Rendered events/_month (5.3ms)
+Completed in 93ms (View: 66, DB: 2) | 200 OK [http://localhost/events]
+  [4;36;1mEvent Load (1.5ms)[0m   [0;1mSELECT * FROM "events" [0m
+  [4;35;1mEvent Destroy (0.7ms)[0m   [0mDELETE FROM "events" WHERE "id" = 68[0m
+  [4;36;1mEvent Destroy (0.3ms)[0m   [0;1mDELETE FROM "events" WHERE "id" = 69[0m
+
+
+Processing EventsController#index (for 127.0.0.1 at 2010-05-27 23:56:35) [GET]
+  [4;35;1mEvent Load (0.7ms)[0m   [0mSELECT * FROM "events" ORDER BY start_time[0m
+Rendering template within layouts/main
+Rendering events/index
+Rendered events/_month (3.5ms)
+Completed in 66ms (View: 44, DB: 1) | 200 OK [http://localhost/events]
+
+
+Processing EventsController#create (for 127.0.0.1 at 2010-05-27 23:56:45) [POST]
+  Parameters: {"authenticity_token"=>"gK/Y75VWZHMn0SZYGLEJ7CIbrUt6vSxt3dUdjOdDLzs=", "events"=>{"address"=>"test", "name"=>"test", "start_time(1i)"=>"2010", "start_time(2i)"=>"5", "month"=>"5", "start_time(3i)"=>"27", "start_time(4i)"=>"23", "start_time(5i)"=>"00", "day"=>"28", "phone"=>"test", "year"=>"2010", "display_name"=>"0", "add_mailing_list"=>"0", "email"=>"test"}}
+  [4;36;1mEvent Load (0.3ms)[0m   [0;1mSELECT "events".id FROM "events" WHERE ("events"."start_time" = '2010-05-28 23:00:00') LIMIT 1[0m
+  [4;35;1mEvent Create (0.4ms)[0m   [0mINSERT INTO "events" ("address", "name", "created_at", "updated_at", "phone", "display_name", "add_mailing_list", "start_time", "email") VALUES('test', 'test', '2010-05-27 23:56:45', '2010-05-27 23:56:45', 'test', 'f', 'f', '2010-05-28 23:00:00', 'test')[0m
+Rendered events/_success (1.9ms)
+Completed in 104ms (View: 3, DB: 1) | 200 OK [http://localhost/events]
+
+
+Processing EventsController#index (for 127.0.0.1 at 2010-05-27 23:59:14) [GET]
+  [4;36;1mEvent Load (1.8ms)[0m   [0;1mSELECT * FROM "events" ORDER BY start_time[0m
+Rendering template within layouts/main
+Rendering events/index
+Rendered events/_month (4.5ms)
+Completed in 90ms (View: 55, DB: 2) | 200 OK [http://localhost/events]
+
+
+Processing EventsController#create (for 127.0.0.1 at 2010-05-27 23:59:25) [POST]
+  Parameters: {"authenticity_token"=>"gK/Y75VWZHMn0SZYGLEJ7CIbrUt6vSxt3dUdjOdDLzs=", "events"=>{"address"=>"test", "name"=>"test", "start_time(1i)"=>"2010", "start_time(2i)"=>"5", "month"=>"5", "start_time(3i)"=>"27", "start_time(4i)"=>"23", "start_time(5i)"=>"00", "day"=>"29", "phone"=>"test", "year"=>"2010", "display_name"=>"0", "add_mailing_list"=>"0", "email"=>"test"}}
+  [4;35;1mEvent Load (0.3ms)[0m   [0mSELECT "events".id FROM "events" WHERE ("events"."start_time" = '2010-05-29 23:00:00') LIMIT 1[0m
+  [4;36;1mEvent Create (0.4ms)[0m   [0;1mINSERT INTO "events" ("address", "name", "created_at", "updated_at", "phone", "display_name", "add_mailing_list", "start_time", "email") VALUES('test', 'test', '2010-05-27 23:59:25', '2010-05-27 23:59:25', 'test', 'f', 'f', '2010-05-29 23:00:00', 'test')[0m
+Rendered events/_success (1.2ms)
+Completed in 38ms (View: 3, DB: 1) | 200 OK [http://localhost/events]
+
+
+Processing EventsController#index (for 127.0.0.1 at 2010-05-27 23:59:35) [GET]
+  [4;35;1mEvent Load (4.3ms)[0m   [0mSELECT * FROM "events" ORDER BY start_time[0m
+Rendering template within layouts/main
+Rendering events/index
+Rendered events/_month (3.8ms)
+Completed in 95ms (View: 61, DB: 4) | 200 OK [http://localhost/events]
+
+
+Processing EventsController#create (for 127.0.0.1 at 2010-05-27 23:59:46) [POST]
+  Parameters: {"authenticity_token"=>"gK/Y75VWZHMn0SZYGLEJ7CIbrUt6vSxt3dUdjOdDLzs=", "events"=>{"address"=>"test", "name"=>"test", "start_time(1i)"=>"2010", "start_time(2i)"=>"5", "month"=>"5", "start_time(3i)"=>"27", "start_time(4i)"=>"23", "start_time(5i)"=>"00", "day"=>"30", "phone"=>"test", "year"=>"2010", "display_name"=>"0", "add_mailing_list"=>"0", "email"=>"test"}}
+  [4;36;1mEvent Load (0.3ms)[0m   [0;1mSELECT "events".id FROM "events" WHERE ("events"."start_time" = '2010-05-30 23:00:00') LIMIT 1[0m
+  [4;35;1mEvent Create (0.4ms)[0m   [0mINSERT INTO "events" ("address", "name", "created_at", "updated_at", "phone", "display_name", "add_mailing_list", "start_time", "email") VALUES('test', 'test', '2010-05-27 23:59:46', '2010-05-27 23:59:46', 'test', 'f', 'f', '2010-05-30 23:00:00', 'test')[0m
+Rendered events/_success (1.2ms)
+Completed in 41ms (View: 3, DB: 1) | 200 OK [http://localhost/events]
