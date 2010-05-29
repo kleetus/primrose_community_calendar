@@ -1,9 +1,4 @@
 module EventsHelper
-  def month_map
-    {'January' => 1, 'February' => 2, 'March' => 3, 'April' => 4, 'May' => 5, 'June' => 6, 
-    'July' => 7, 'August' => 8, 'September' => 9, 'October' => 10, 'November' => 11, 'December' => 12}
-  end
-    
   def days_in_month(month, year)
     Date.new(year, month, -1).day
   end
@@ -41,27 +36,28 @@ module EventsHelper
         num_class = "soft_nums_#{(soft_nums = !soft_nums).to_s}"
         @start_time += (86400*31)
       end
-      today_class = " today" if day == @now.day && @month == @now.month
+      today_class = " today" if day == @now.day && @current_month == @now.month
       ret += "<td month='#{@start_time.month}' word_month='#{@start_time.strftime("%B")}' year='#{@start_time.year}' id='#{@current_month}_#{day}' class='#{num_class+today_class}'>
               <div class='day_wrapper'><span>#{day}</span>
-              #{print_event_block(@year, @current_month, day)}</div></td>"
+              #{get_days_events(@year, @current_month, day)}</div></td>"
     end
     ret += "</tr>"
   end
   
-  def print_event_block(year, month, day, events=@all_events)
+  def get_days_events(year, month, day)
+    month, day = [month.to_s, day.to_s].map! {|t| t.length==1 ? t="0"+t : t}
     time_string = "#{year}-#{month}-#{day}"
-    if events.has_key? time_string
-      todays_events = "<p><div class='todays_events'>"
-      event = events[time_string]
+    events = Event.find(:all, :conditions => ["start_time>='#{time_string} 00:00:00' and start_time<='#{time_string} 23:59:59'"])
+    ret = ''
+    events.each do |event|
+      ret += "<p><div class='todays_events'>"
       if event['display_name']
-        todays_events += event['name']
+        ret += event['name']
       else
-        todays_events += "Name withheld"
+        ret += "Name withheld"
       end
-      todays_events += "--></div><div class='todays_events'>#{event['start_time'].strftime('%I:%M %p')}</div></p>"
+      ret += "--></div><div class='todays_events'>#{event['start_time'].strftime('%I:%M %p')}</div></p>"
     end
-    todays_events
-  end
-  
+    ret
+  end  
 end

@@ -13,6 +13,7 @@ ActiveRecord::Schema.define(:version => 20100509123734) do
 
   create_table "events", :force => true do |t|
     t.datetime "start_time"
+    t.datetime "end_time"
     t.string   "email"
     t.string   "address"
     t.string   "phone"

@@ -45,7 +45,7 @@ td {
  font-size: smaller; 
 }
 
-#event_form input, #time_select {
+#event_form input, .time_select {
   float: right;
 }
 
@@ -55,6 +55,7 @@ td {
 }
 
 .success {
+  clear: left;
   color: green;
   font-size: 16px;  
 }
@@ -115,17 +116,10 @@ label {
   font-weight: normal;
 }
 
-.todays_events {
+.todays_events, #this_event {
   float: left;
   position: relative;
   left: 0px;
   font-size: smaller;
   color: red;
-}
-
-#this_event {
-  position: relative;
-  left: 0px;
-  margin-bottom: 20px;
-  font-size: smaller;
 }

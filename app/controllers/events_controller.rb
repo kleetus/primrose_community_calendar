@@ -5,12 +5,6 @@ class EventsController < ApplicationController
     @now = Time.now
     @month = params.has_key?("month") ? params["month"].to_i : @now.month
     @year = params.has_key?("year") ? params["year"].to_i : @now.year
-    ae = Event.find(:all, :order => "start_time")
-    @all_events = {}
-    ae.each do |event|
-      date = "#{event['start_time'].year}-#{event['start_time'].month}-#{event['start_time'].day}"
-      @all_events[date] =  event
-    end
     view = 'calendar'
     calendar_view = 'monthly'
     view = params[:view_type] if params.has_key? :view_type
@@ -23,9 +17,11 @@ class EventsController < ApplicationController
   def create
     render :status => 400, :text => "error, nothing submitted" unless params.has_key? :events
     @year, @month, @day = params[:events]["year"], params[:events]["month"], params[:events]["day"]
-    start_time = "#{@year}-#{@month}-#{@day} #{params[:events]["start_time(4i)"]}:#{params[:events]["start_time(5i)"]}"
+    start_time = Time.mktime(@year.to_i, @month.to_i, @day.to_i, params[:events]["start_time(4i)"].to_i, params[:events]["start_time(5i)"].to_i)
+    end_time = start_time + (3600*params[:events][:hours_needed].to_i)
     @event = Event.new(
       :start_time => start_time,
+      :end_time => end_time,
       :email => params[:events][:email],
       :address => params[:events][:address],
       :phone => params[:events][:phone],

@@ -4,7 +4,7 @@
 #container
   %span#left_arrow{ :onclick => "javascript:move_month(-1);"}
   %span.time_heading#month{ :month => @month }
-    = month_map.invert[@month]
+    = Date::MONTHNAMES[@month.to_i]
   %span.time_heading#year{ :year => @year }
     = @year
   %span#right_arrow{ :onclick => "javascript:move_month(1);"}

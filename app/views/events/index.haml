@@ -3,7 +3,7 @@
 %br
 = render :partial => 'month'
 #event_form{:title => "New Event"}
-  - remote_form_for :events, :update => { :success => "event_submit", :failure => "event_submit" }, :complete => "restyle_callback_element(); add_event_to_calendar(); $('.ui-dialog').fadeOut(5000);" do |f|
+  - remote_form_for :events, :update => { :success => "event_submit", :failure => "event_submit" }, :complete => "restyle_callback_element(); add_event_to_calendar();" do |f|
     #main_event_label
     %br
     = f.hidden_field :month
@@ -20,8 +20,12 @@
       = f.check_box :display_name    
     %p
     = f.label :start_time, 'Start Time'
-    #time_select
+    .time_select
       = f.time_select :start_time, { :minute_step => 30 }
+    %p
+    = f.label :hours_needed, 'Number of Hours Needed'
+    .time_select
+      = f.select :hours_needed, ['4', '8']
     %p
     = f.label :email, 'Email: (optional)'
     = f.text_field :email
