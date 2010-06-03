@@ -1,6 +1,10 @@
 class Event < ActiveRecord::Base
   validates_presence_of :name, :address, :phone, :start_time, :end_time
   MAX_EVENT_LENGTH = 8*3600
+
+  def after_create
+    Notifier.deliver_event_notification(self)
+  end
   
   def validate
     start_time_prime = start_time - (MAX_EVENT_LENGTH)

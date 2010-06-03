@@ -1,4 +1,4 @@
-module EventsHelper
+  module EventsHelper
   def days_in_month(month, year)
     Date.new(year, month, -1).day
   end
