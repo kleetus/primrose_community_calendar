@@ -43,4 +43,5 @@ ActionController::Routing::Routes.draw do |map|
   map.root :controller => :events, :action => :index
   map.connect ':controller/:action/:id.:format'
   map.connect '/scheduling_rules', :controller => :events, :action => :rules
+  map.connect '/admin', :controller => :events, :action => :admin
 end

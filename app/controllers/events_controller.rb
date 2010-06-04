@@ -5,13 +5,6 @@ class EventsController < ApplicationController
     @now = Time.now
     @month = params.has_key?("month") ? params["month"].to_i : @now.month
     @year = params.has_key?("year") ? params["year"].to_i : @now.year
-    view = 'calendar'
-    calendar_view = 'monthly'
-    view = params[:view_type] if params.has_key? :view_type
-    calendar_view = params[:calendar_view] if params.has_key? :calendar_view
-    if view == 'admin_list'
-      render :partial => 'admin_list'
-    end
   end
   
   def create
@@ -35,4 +28,7 @@ class EventsController < ApplicationController
     end
   end
   
+  def admin
+    @events = Event.find(:all)
+  end
 end
