@@ -21,6 +21,10 @@ restyle_callback_element = function() {
   $("#event_form").dialog("close");
 }
 
+loading = function() {
+  $('#events_submit').hide();
+}
+
 move_month = function(direction) {
   var month = parseInt($("#month").attr("month"));
   var year = parseInt($("#year").attr("year"));

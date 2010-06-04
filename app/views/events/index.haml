@@ -3,7 +3,7 @@
 %br
 = render :partial => 'month'
 #event_form{:title => "New Event"}
-  - remote_form_for :events, :update => { :success => "event_submit", :failure => "event_submit" }, :complete => "restyle_callback_element(); add_event_to_calendar();" do |f|
+  - remote_form_for :events, :loading => "loading();", :update => { :success => "event_submit", :failure => "event_submit" }, :complete => "restyle_callback_element(); add_event_to_calendar();" do |f|
     #main_event_label
     %br
     = f.hidden_field :month
