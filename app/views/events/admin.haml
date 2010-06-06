@@ -3,6 +3,8 @@
 - @events.each_with_index do |event, index|
   %p
     .admin_list_event
+      = event.id
+      %br
       = event.name
       %br
       = event.address
