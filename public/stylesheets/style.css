@@ -123,3 +123,25 @@ label {
   font-size: smaller;
   color: red;
 }
+
+.approved {
+  color: green;
+}
+
+.rejected {
+  color: #999999;
+}
+
+.divider {
+  clear: both; 
+}
+
+.line_divider {
+  float: left;
+  clear: right;
+}
+
+#controller_link {
+  margin-right: 20px;
+}
+

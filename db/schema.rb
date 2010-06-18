@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100509123734) do
+ActiveRecord::Schema.define(:version => 20100618145921) do
 
   create_table "events", :force => true do |t|
     t.datetime "start_time"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(:version => 20100509123734) do
     t.boolean  "add_mailing_list"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "current_state"
   end
 
 end

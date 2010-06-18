@@ -1,17 +1,39 @@
 %h2
   This is a list of events for the future
-- @events.each_with_index do |event, index|
-  %p
-    .admin_list_event
-      = event.id
-      %br
-      = event.name
-      %br
-      = event.address
-      %br
-      = event.phone
-      %br
-      = event.start_time
+- unless @events.blank?
+  - @events.each_with_index do |event, index|
+    %p
+      .admin_list_event
+        %label ID:
+        = event.id
+        %br
+        %label Name:
+        = event.name
+        %br
+        %label Email:
+        = mail_to event.email
+        %br
+        %label Address:
+        = event.address
+        %br
+        %label Phone:
+        = event.phone
+        %br
+        %label Start Time:
+        = event.start_time
+        %br
+        %label Current Status:
+        = event.state
+        %br
+        - if event.acceptable?
+          %a#controller_link{ :href => "/admin/approve/#{event.id}" } Accept
+        - if event.rejectable?
+          %a#controller_link{ :href => "/admin/reject/#{event.id}" } Reject
+        <--this will kick off an email to the person who scheduled the event
+        .divider
+        %hr.line_divider{ :width => '700' }
+        .divider
+      
     
     
   

@@ -50,13 +50,13 @@
     events = Event.find(:all, :conditions => ["start_time>='#{time_string} 00:00:00' and start_time<='#{time_string} 23:59:59'"])
     ret = ''
     events.each do |event|
-      ret += "<p><div class='todays_events'>"
+      ret += "<p><div class='todays_events #{event.current_state}'>"
       if event['display_name']
         ret += event['name']
       else
         ret += "Name withheld"
       end
-      ret += "--></div><div class='todays_events'>#{event['start_time'].strftime('%I:%M %p')}</div></p>"
+      ret += "--></div><div class='todays_events #{event.current_state}'>#{event['start_time'].strftime('%I:%M %p')}</div></p>"
     end
     ret
   end  

@@ -31,4 +31,22 @@ class EventsController < ApplicationController
   def admin
     @events = Event.find(:all)
   end
+  
+  def reject
+    @event = Event.find(params[:id])
+    @event.reject! if @event
+    redirect_to '/admin'
+  end
+  
+  def approve
+    @event = Event.find(params[:id])
+    @event.approve! if @event
+    redirect_to '/admin'
+  end
+  
+  def remove
+    @event = Event.find(params[:id])
+    @event.destroy if @event
+    render :action => :admin
+  end
 end
