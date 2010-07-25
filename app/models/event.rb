@@ -8,8 +8,8 @@ class Event < ActiveRecord::Base
   aasm_initial_state :requested
 
   aasm_state :requested
-  aasm_state :approved, :enter => :inform
-  aasm_state :rejected, :enter => :inform
+  aasm_state :approved, :after_enter => :inform
+  aasm_state :rejected, :after_enter => :inform
 
   aasm_event :approve do
     transitions :to => :approved, :from => [:requested, :rejected]
@@ -40,17 +40,20 @@ class Event < ActiveRecord::Base
   end
   
   def validate
-    start_time_prime = start_time - (MAX_EVENT_LENGTH)
-    end_time_prime = end_time + (MAX_EVENT_LENGTH)
-    matching_id = self.id ? " and id!=#{self.id}" : ""
-    overlap_events = Event.find(:all, :conditions => ["end_time<='#{end_time_prime.strftime("%Y-%m-%d %H:%M:%S")}' and start_time>='#{start_time_prime.strftime("%Y-%m-%d %H:%M:%S")}'#{matching_id}"])
-    return true if overlap_events.empty?
-    delta = (start_time.to_i..end_time.to_i).to_a
-    overlap_events.each do |e|
-      unless (delta & (e.start_time.to_i..e.end_time.to_i).to_a).empty?
-        errors.add(:start_time, "There is a conflicting event")
+    begin
+      start_time_prime = start_time - (MAX_EVENT_LENGTH)
+      end_time_prime = end_time + (MAX_EVENT_LENGTH)
+      matching_id = self.id ? " and id!=#{self.id}" : ""
+      overlap_events = Event.find(:all, :conditions => ["end_time<='#{end_time_prime.strftime("%Y-%m-%d %H:%M:%S")}' and start_time>='#{start_time_prime.strftime("%Y-%m-%d %H:%M:%S")}'#{matching_id}"])
+      return true if overlap_events.empty?
+      delta = (start_time.to_i..end_time.to_i).to_a
+      overlap_events.each do |e|
+        unless (delta & (e.start_time.to_i..e.end_time.to_i).to_a).empty?
+          errors.add(:start_time, "There is a conflicting event")
+        end
       end
+    rescue
+      errors
     end
-    errors
   end
 end
