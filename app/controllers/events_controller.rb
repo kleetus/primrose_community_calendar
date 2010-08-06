@@ -29,7 +29,7 @@ class EventsController < ApplicationController
   end
   
   def admin
-    @events = Event.find(:all)
+    @events = Event.find(:all, :conditions => ["end_time > '#{Time.now.strftime("%Y-%m-%d")}'"])
   end
   
   def reject
