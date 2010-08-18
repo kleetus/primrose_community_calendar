@@ -29,7 +29,8 @@ class EventsController < ApplicationController
   end
   
   def admin
-    @events = Event.find(:all, :conditions => ["end_time > '#{Time.now.strftime("%Y-%m-%d")}'"])
+    condition = params[:limit] == "all" ? [] : ["end_time > '#{Time.now.strftime("%Y-%m-%d")}'"]
+    @events = Event.find(:all, :conditions => condition)
   end
   
   def reject
