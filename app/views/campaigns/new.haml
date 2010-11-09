@@ -1,0 +1,17 @@
+%h1==New Campaign
+
+#response{:style => 'color:pink;'}
+%br
+
+- remote_form_for :campaign, :complete => "$('#response').html(request.responseText);", :url => campaigns_url do |f|
+  Campaign Name: 
+  = f.text_field :campaign
+  %br
+  = f.submit :save
+  
+
+%h1#campaignslist==List of campaigns
+- if @campaigns
+  %ul
+    - @campaigns.each do |campaign|
+      %li=campaign

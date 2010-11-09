@@ -9,7 +9,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100618145921) do
+ActiveRecord::Schema.define(:version => 20101012162534) do
+
+  create_table "campaigns", :force => true do |t|
+    t.text     "campaign"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "events", :force => true do |t|
     t.datetime "start_time"
@@ -22,7 +28,37 @@ ActiveRecord::Schema.define(:version => 20100618145921) do
     t.boolean  "add_mailing_list"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "status",           :default => "pending"
     t.string   "current_state"
+  end
+
+  create_table "questions", :force => true do |t|
+    t.text     "question"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "survey_responses", :force => true do |t|
+    t.text     "response"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "voters", :force => true do |t|
+    t.string   "name"
+    t.string   "address"
+    t.string   "phone"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "votes", :force => true do |t|
+    t.integer  "voter_id"
+    t.integer  "question_id"
+    t.integer  "survey_response_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

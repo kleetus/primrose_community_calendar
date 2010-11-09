@@ -1,0 +1,8 @@
+%h1==New Survey Question
+= error_messages_for 'question'
+
+- form_for :question, :url => questions_url do |f|
+  Question: 
+  = f.text_field :question
+  %br
+  = f.submit :save
