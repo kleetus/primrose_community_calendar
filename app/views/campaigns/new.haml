@@ -13,5 +13,11 @@
 %h1#campaignslist==List of campaigns
 - if @campaigns
   %ul
-    - @campaigns.each do |campaign|
-      %li=campaign
+    - @campaigns.each do |campaign|      
+      = render :partial => 'shared/campaigns', :locals => { :campaign => campaign }
+
+:javascript
+  $(document).ready(
+    function(){
+    $(".accordion").accordion();
+  });
