@@ -1,42 +1,27 @@
-%li.campaign_title=campaign
-.accordion
-  %h3
-    %a{:href => "#"} Section 1
-  %div
-    %p
-      Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
-      ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
-      amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
-      odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
-  %h3
-    %a{:href => "#"} Section 2
-  %div
-    %p
-      Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet
-      purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor
-      velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In
-      suscipit faucibus urna.
-  %h3
-    %a{:href => "#"} Section 3
-  %div
-    %p
-      Nam enim risus, molestie et, porta ac, aliquam ac, risus. Quisque lobortis.
-      Phasellus pellentesque purus in massa. Aenean in pede. Phasellus ac libero
-      ac tellus pellentesque semper. Sed ac felis. Sed commodo, magna quis
-      lacinia ornare, quam ante aliquam nisi, eu iaculis leo purus venenatis dui.
-    %ul
-      %li List item one
-      %li List item two
-      %li List item three
-  %h3
-    %a{:href => "#"} Section 4
-  %div
-    %p
-      Cras dictum. Pellentesque habitant morbi tristique senectus et netus
-      et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in
-      faucibus orci luctus et ultrices posuere cubilia Curae; Aenean lacinia
-      mauris vel est.
-    %p
-      Suspendisse eu nisl. Nullam ut libero. Integer dignissim consequat lectus.
-      Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
-      inceptos himenaeos.
+%h3
+  %a{:href => "#"}=campaign
+.section
+  %span#new_question
+    Add new question:
+    - remote_form_for :question, :complete => "$('#response').html(request.responseText);", :url => questions_url do |f|
+      = f.text_area :question
+      %br
+      = f.submit :save
+  %span#new_response
+    Add new response:
+    - remote_form_for :survey_response, :complete => "$('#response').html(request.responseText);", :url => survey_responses_url do |f|
+      = f.text_area :response
+      %br
+      = f.submit :save
+  %p
+  .questions_and_responses
+    %span.question==Question
+    %span.response==Response
+    - campaign.questions.each_with_index do |question, index|
+      %span.question=question
+      - if question.response?
+        %span.response=question.survey_response
+      - else
+        %span.no_response==no response chosen for this question
+    
+    

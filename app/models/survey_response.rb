@@ -1,3 +1,4 @@
 class SurveyResponse < ActiveRecord::Base
-  has_one :question
+  belongs_to :question
+  has_many :votes
 end

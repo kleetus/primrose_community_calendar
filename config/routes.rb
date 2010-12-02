@@ -41,6 +41,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :events
   map.resources :campaigns
   map.resources :voters
+  map.resources :questions
+  map.resources :survey_responses
   map.connect ':controller/:action/:id'
   map.root :controller => :events, :action => :index
   map.connect ':controller/:action/:id.:format'

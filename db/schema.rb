@@ -34,12 +34,14 @@ ActiveRecord::Schema.define(:version => 20101012162534) do
 
   create_table "questions", :force => true do |t|
     t.text     "question"
+    t.integer  "campaign_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "survey_responses", :force => true do |t|
     t.text     "response"
+    t.integer  "question_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

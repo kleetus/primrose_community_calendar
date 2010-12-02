@@ -148,3 +148,40 @@ label {
 #campaignslist {
   margin-top: 100px;
 }
+
+.campaign_title {
+  font-size: 20px;
+}
+
+#question_question {
+  width: 500px;
+  height: 150px;
+}
+
+#response_response {
+  width: 500px;
+  height: 150px;
+}
+
+.no_response {
+  color: #ffbbff;
+}
+
+.response {
+  width: 400px;
+}
+
+#new_response {
+  float: left;
+}
+
+#new_question {
+  float: left;
+}
+
+.question {
+  clear: left;
+  float: left;
+  width: 500px;
+  margin-right: 20px;
+}

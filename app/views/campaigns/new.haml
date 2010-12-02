@@ -12,8 +12,8 @@
 
 %h1#campaignslist==List of campaigns
 - if @campaigns
-  %ul
-    - @campaigns.each do |campaign|      
+  .accordion.campaign_title
+    - @campaigns.each do |campaign|
       = render :partial => 'shared/campaigns', :locals => { :campaign => campaign }
 
 :javascript
