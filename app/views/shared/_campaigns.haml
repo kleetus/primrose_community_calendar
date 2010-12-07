@@ -1,27 +1,35 @@
 %h3
   %a{:href => "#"}=campaign
 .section
-  %span#new_question
-    Add new question:
-    - remote_form_for :question, :complete => "$('#response').html(request.responseText);", :url => questions_url do |f|
-      = f.text_area :question
-      %br
-      = f.submit :save
-  %span#new_response
-    Add new response:
-    - remote_form_for :survey_response, :complete => "$('#response').html(request.responseText);", :url => survey_responses_url do |f|
-      = f.text_area :response
-      %br
-      = f.submit :save
-  %p
-  .questions_and_responses
-    %span.question==Question
-    %span.response==Response
-    - campaign.questions.each_with_index do |question, index|
-      %span.question=question
+  %table
+    %tr
+      %td
+        Add new question:
+        - remote_form_for :question, :complete => "$('#response').html(request.responseText);", :url => questions_url do |f|
+          = f.text_area :question
+          %br
+          = f.submit :save
+      %td
+        Add new response:
+        - remote_form_for :survey_response, :complete => "$('#response').html(request.responseText);", :url => survey_responses_url do |f|
+          = f.text_area :response
+          %br
+          = f.submit :save
+  %table.q_r
+    %tr
+      %th
+        Questions
+      %th
+        Responses
+        - campaign.questions.each_with_index do |question, index|
+    %tr
+      %td
+        = question
       - if question.response?
-        %span.response=question.survey_response
-      - else
-        %span.no_response==no response chosen for this question
+        %td
+          = question.survey_response
+        - else
+          %td
+            == no response chosen for this question
     
     
