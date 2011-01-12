@@ -4,7 +4,16 @@ class SurveyResponsesController < ApplicationController
   end
   
   def new
-    @question = Question.find(params[:question_id])
+    @sr = SurveyResponse.create(:question_id => params[:question_id])
+  end
+  
+  def edit
+    @sr = SurveyResponse.find(params[:id])
+  end
+  
+  def destroy
+    SurveyResponse.destroy(params[:id])
+    redirect_to campaign_question_survey_responses_url
   end
   
   def create
@@ -14,6 +23,6 @@ class SurveyResponsesController < ApplicationController
     else
       flash[:notice] = "There were errors on the submitted survey response."
     end
-    redirect_to new_campaign_question_survey_response_path
+    redirect_to campaign_question_survey_responses_path(@survey_response.question.campaign_id, @survey_response.question_id, @sr)
   end
 end

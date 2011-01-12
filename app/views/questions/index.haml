@@ -1,12 +1,19 @@
-%h1="Questions for the #{@campaign.campaign} Campaign"
+%h1="Questions for the \"#{@campaign.campaign}\" Campaign"
 
-%ul
-- @campaign.questions.each_with_index do |question,index|
-  %li
-    %span=index+1
-    %span=question
-    %span=link_to "show responses for this question", campaign_question_survey_responses_path(@campaign, question)
-
+- if @campaign.questions.blank?
+  There are no questions yet for this campaign
+- else
+  %ul
+  - @campaign.questions.each_with_index do |question,index|
+    %li
+      .list_box
+        %span=index+1
+        %span=question
+        %span.delete_label=link_to  "Delete", campaign_question_url(@campaign, question), :method => "delete"
+        %span.edit_label=link_to  "Edit", edit_campaign_question_url(@campaign, question)
+        %span.show_label=link_to "Responses", campaign_question_survey_responses_path(@campaign, question)
+    
+%br
 =link_to "new question for this campaign", new_campaign_question_path(@campaign)
 %br
 =link_to "back to the list of campaigns", campaigns_path

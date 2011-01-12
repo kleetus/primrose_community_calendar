@@ -188,17 +188,18 @@ th {
   height: 50px;
 }
 
-.edit_label {
+.delete_label, .edit_label, .show_label {
   text-align: right;
   float: right;
+  margin-right: 10px;
 }
 
 .campaign_label {
   margin-right: 10px;
 }
 
-.campaign {
-  width: 200px;
+.list_box {
+  width: 600px;
 }
 
 .q_r th {

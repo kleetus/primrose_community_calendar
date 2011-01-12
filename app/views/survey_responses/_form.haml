@@ -1,0 +1,12 @@
+- if flash[:notice]
+  .notice=flash[:notice]
+%br
+
+- form_for :survey_response, @sr, :url => campaign_question_survey_responses_path(@sr.question.campaign_id, @sr.question) do |f|
+  Survey Response:
+  %br
+  = f.text_area :response
+  %br
+  = f.submit :save
+%br
+=link_to "show all survey responses for this question", campaign_question_survey_responses_path

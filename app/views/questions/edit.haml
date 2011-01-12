@@ -1,0 +1,2 @@
+%h1="Edit the Question, \"#{@question.question}\""
+=render :partial => "form", :locals => {:url => { :action => "update" }, :method => { :method => 'put' }}

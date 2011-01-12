@@ -6,4 +6,11 @@ class Campaign < ActiveRecord::Base
   def to_s
     campaign
   end
+  
+  def destroy_all
+    questions.each do |q|
+      q.destroy_all
+    end
+    Campaign.destroy(id)
+  end
 end

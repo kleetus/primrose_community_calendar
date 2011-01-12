@@ -1,14 +1,2 @@
-%h1="New Survey Response for the Question, \"#{@question.question}\""
-
-- if flash[:notice]
-  .notice=flash[:notice]
-%br
-
-- form_for :survey_response, :url => campaign_question_survey_responses_path(@question.campaign_id, @question) do |f|
-  Survey Response:
-  %br
-  = f.text_area :response
-  %br
-  = f.submit :save
-%br
-=link_to "show all survey responses for this question", campaign_question_survey_responses_path
+%h1="New Survey Response for the Question, \"#{@sr.question}\""
+=render :partial => "form", :object => @sr

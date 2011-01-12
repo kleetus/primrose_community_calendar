@@ -3,6 +3,10 @@ class CampaignsController < ApplicationController
     find_all_campaigns
   end
   
+  def show
+    @campaign = Campaign.find(params[:id])
+  end
+  
   def new
     @campaign = Campaign.new
   end
@@ -14,7 +18,7 @@ class CampaignsController < ApplicationController
     else
       flash[:notice] = "There were errors on the submitted campaign."
     end
-    redirect_to new_campaign_path
+    redirect_to campaigns_path
   end
   
   def edit
@@ -25,6 +29,12 @@ class CampaignsController < ApplicationController
     Campaign.update(params[:id], params[:campaign])
     flash[:notice] = "Campaign saved!"
     redirect_to edit_campaign_url(params[:campaign])
+  end
+  
+  def destroy
+    @c = Campaign.find(params[:id])
+    @c.destroy_all
+    redirect_to campaigns_url
   end
   
   def publish

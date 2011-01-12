@@ -1,10 +1,20 @@
-.question_header
-  Survey responses for the question:
-  .question=@question
-%ul
-- @question.survey_responses.each do |sr|
-  %li=sr.response
+%h1="Survey Responses for Question: \"#{@question.question}\""
+- if @question.survey_responses.blank?
+  There are no survey responses yet for this campaign
+- else
+  %ul
+  - @question.survey_responses.each_with_index do |sr,i|
+    %li
+      .list_box
+        %span=i+1
+        %span=sr.response
+        %span.delete_label=link_to  "Delete", campaign_question_survey_response_url(@question.campaign_id, @question, sr), :method => "delete"
+        %span.edit_label=link_to  "Edit", edit_campaign_question_survey_response_url(@question.campaign_id, @question, sr)
 %br
 =link_to "add a new survey response", new_campaign_question_survey_response_path(@question.campaign_id, @question)
 %br
 =link_to "add a new question for this campaign", new_campaign_question_path(@question.campaign_id)
+%br
+=link_to "return to the list of questions for this campaign", campaign_questions_path(@question.campaign_id)
+%br
+=link_to "return to the list of campaigns", campaigns_path

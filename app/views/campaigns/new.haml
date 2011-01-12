@@ -1,7 +1,2 @@
 %h1==New Campaign
-
-- if flash[:notice]
-  .notice=flash[:notice]
-%br
-
 =render :partial => 'form', :locals => {:url => { :action => "create" }, :method => { :method => 'post' }}

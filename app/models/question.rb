@@ -10,4 +10,11 @@ class Question < ActiveRecord::Base
   def response?
     survey_response ? true : false
   end  
+  
+  def destroy_all
+    survey_responses.each do |sr|
+      SurveyResponse.destroy(sr)
+    end
+    Question.destroy(id)
+  end
 end
