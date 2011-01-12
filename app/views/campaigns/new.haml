@@ -1,23 +1,7 @@
 %h1==New Campaign
 
-#response{:style => 'color:pink;'}
+- if flash[:notice]
+  .notice=flash[:notice]
 %br
 
-- remote_form_for :campaign, :complete => "$('#response').html(request.responseText);", :url => campaigns_url do |f|
-  Campaign Name: 
-  = f.text_field :campaign
-  %br
-  = f.submit :save
-  
-
-%h1#campaignslist==List of campaigns
-- if @campaigns
-  .accordion.campaign_title
-    - @campaigns.each do |campaign|
-      = render :partial => 'shared/campaigns', :locals => { :campaign => campaign }
-
-:javascript
-  $(document).ready(
-    function(){
-    $(".accordion").accordion();
-  });
+=render :partial => 'form', :locals => {:url => { :action => "create" }, :method => { :method => 'post' }}

@@ -1,8 +1,14 @@
-%h1==New Survey Question
-= error_messages_for 'question'
+%h1="New Question for the #{@campaign.campaign} Campaign"
 
-- form_for :question, :url => questions_url do |f|
-  Question: 
-  = f.text_field :question
+- if flash[:notice]
+  .notice=flash[:notice]
+%br
+
+- form_for :question, :url => campaign_questions_path(@campaign) do |f|
+  Question:
+  %br
+  = f.text_area :question
   %br
   = f.submit :save
+  
+=link_to "show all questions for this campaign", campaign_questions_path

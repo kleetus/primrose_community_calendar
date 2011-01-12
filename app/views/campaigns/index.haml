@@ -1,5 +1,10 @@
-%h1==Campaigns
+%h1
+  Campaigns
+=link_to "New Campaign", new_campaign_url
 - if @campaigns
   %ul
   - @campaigns.each do |campaign|
-    %li=campaign
+    %li
+      .campaign
+        %span.campaign_label=campaign
+        %span.edit_label=link_to  "Edit", edit_campaign_url(campaign)

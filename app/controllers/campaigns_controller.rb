@@ -4,20 +4,45 @@ class CampaignsController < ApplicationController
   end
   
   def new
-    find_all_campaigns
+    @campaign = Campaign.new
   end
   
   def create
     @campaign = Campaign.create(:campaign => params[:campaign][:campaign])
     if @campaign.save
-      render :text => "Campaign called, \"#{params[:campaign][:campaign]}\" was successfully saved!"
+      flash[:notice] = "Campaign called, \"#{params[:campaign][:campaign]}\" was successfully saved!"
     else
-      render :text => "There were errors on the suggested campaign."
+      flash[:notice] = "There were errors on the submitted campaign."
     end
+    redirect_to new_campaign_path
+  end
+  
+  def edit
+    @campaign = Campaign.find(params[:id])
+  end
+  
+  def update
+    Campaign.update(params[:id], params[:campaign])
+    flash[:notice] = "Campaign saved!"
+    redirect_to edit_campaign_url(params[:campaign])
+  end
+  
+  def publish
+    #this makes the campaign visible at a url
+    
   end
   
   protected
   def find_all_campaigns
-    @campaigns = Campaign.find(:all)
+    @campaigns = Campaign.find(:all, :order => "created_at DESC")
+    if params[:active_campaign] and @campaigns
+      @campaigns.each do |c|
+        if c.id == params[:active_campaign].to_i
+          @campaigns.delete(c)
+          @campaigns.unshift(c)
+          break
+        end
+      end
+    end
   end
 end

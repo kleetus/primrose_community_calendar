@@ -1,0 +1,7 @@
+%h1="Editing the #{@campaign} campaign"
+- if flash[:notice]
+  .notice=flash[:notice]
+%br
+=render :partial => 'form', :locals => {:url => { :action => "update" }, :method => { :method => 'put' }}
+%p
+=link_to "New Question for this Campaign", new_campaign_question_url(@campaign)

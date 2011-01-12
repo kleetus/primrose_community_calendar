@@ -1,3 +1,4 @@
 *.log
 *swp
 *.sqlite3
+*.yml

@@ -1,0 +1,7 @@
+- form_for :campaign, :url => url, :html => method do |f|
+  Campaign Name:
+  = f.text_field :campaign
+  %br
+  = f.submit :save
+%br
+=link_to "list all campaigns", campaigns_url

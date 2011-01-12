@@ -1,0 +1,10 @@
+.question_header
+  Survey responses for the question:
+  .question=@question
+%ul
+- @question.survey_responses.each do |sr|
+  %li=sr.response
+%br
+=link_to "add a new survey response", new_campaign_question_survey_response_path(@question.campaign_id, @question)
+%br
+=link_to "add a new question for this campaign", new_campaign_question_path(@question.campaign_id)

@@ -14,7 +14,25 @@ $(function() {
     $("#events_year").val(year);
     $("#events_day").val(day);
   });
+  $("#response_form").dialog({autoOpen:false});
+  // $("#event_submit").dialog({autoOpen:false});
+  // $("td").click(function(){
+  //   var year = $(this).attr("year");
+  //   var month = parseInt($(this).attr("month"));
+  //   var now = new Date();
+  //   var day = $(this).attr("id").split('_')[1];
+  //   var selected_date = new Date(year, month-1, day);
+  //   if(selected_date<now) return;
+  //   $("#event_form").dialog("open");
+  //   $("#main_event_label").html("Setting Event for " + $(this).attr("word_month") + " " + $("#"+this.id+" > .day_wrapper > span").html()  + ", " + $(this).attr("year"));
+  //   $("#events_month").val(month);
+  //   $("#events_year").val(year);
+  //   $("#events_day").val(day);
+  // });
+  
 });
+
+
 
 restyle_callback_element = function() {
   $("#event_submit").dialog("open");

@@ -1,7 +1,7 @@
 class Question < ActiveRecord::Base
-  has_one :survey_response
+  has_many :survey_responses
   has_many :votes
-  validates_presence_of :question
+  validates_presence_of :question, :campaign_id
   
   def to_s
     question
@@ -9,5 +9,5 @@ class Question < ActiveRecord::Base
 
   def response?
     survey_response ? true : false
-  end
+  end  
 end

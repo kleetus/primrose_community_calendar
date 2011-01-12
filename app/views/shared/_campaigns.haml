@@ -5,31 +5,10 @@
     %tr
       %td
         Add new question:
-        - remote_form_for :question, :complete => "$('#response').html(request.responseText);", :url => questions_url do |f|
+        - form_for :question, :url => questions_url do |f|
           = f.text_area :question
+          = hidden_field_tag :campaign_id, campaign.id
           %br
           = f.submit :save
-      %td
-        Add new response:
-        - remote_form_for :survey_response, :complete => "$('#response').html(request.responseText);", :url => survey_responses_url do |f|
-          = f.text_area :response
-          %br
-          = f.submit :save
-  %table.q_r
-    %tr
-      %th
-        Questions
-      %th
-        Responses
-        - campaign.questions.each_with_index do |question, index|
-    %tr
-      %td
-        = question
-      - if question.response?
-        %td
-          = question.survey_response
-        - else
-          %td
-            == no response chosen for this question
-    
-    
+          #response_form            
+  = render :partial => 'shared/question_table'

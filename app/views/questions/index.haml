@@ -1,3 +1,12 @@
-%h1==Questions
+%h1="Questions for the #{@campaign.campaign} Campaign"
 
-/ - @questions.each do |question|
+%ul
+- @campaign.questions.each_with_index do |question,index|
+  %li
+    %span=index+1
+    %span=question
+    %span=link_to "show responses for this question", campaign_question_survey_responses_path(@campaign, question)
+
+=link_to "new question for this campaign", new_campaign_question_path(@campaign)
+%br
+=link_to "back to the list of campaigns", campaigns_path

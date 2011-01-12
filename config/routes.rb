@@ -39,10 +39,12 @@ ActionController::Routing::Routes.draw do |map|
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
   # consider removing or commenting them out if you're using named routes and resources.
   map.resources :events
-  map.resources :campaigns
+  map.resources :campaigns do |r|
+      r.resources :questions do |q|
+        q.resources :survey_responses
+      end
+  end
   map.resources :voters
-  map.resources :questions
-  map.resources :survey_responses
   map.connect ':controller/:action/:id'
   map.root :controller => :events, :action => :index
   map.connect ':controller/:action/:id.:format'

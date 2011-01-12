@@ -1,0 +1,17 @@
+%table.q_r
+  %tr
+    %th
+      Questions
+    %th
+      Responses
+      - campaign.questions.each_with_index do |question, index|
+  %tr
+    %td
+      = question
+    - if question.response?
+      %td
+        = question.survey_response
+      - else
+        %td
+          == no response chosen for this question
+  
